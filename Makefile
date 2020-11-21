@@ -6,7 +6,7 @@ export INCDIR = include
 APP_NAME = valgrind_test
 
 CC = gcc
-CFLAGS = -Wall -Wextra -I $(INCDIR)
+CFLAGS = -Wall -Werror -Wextra -I $(INCDIR)
 
 ifeq ($(DEBUG),1)
 CFLAGS += -g
@@ -40,7 +40,7 @@ $(BINDIR)/$(SRCDIR)/%.o: $(SRCDIR)/%.c
 
 clean:
 	rm -rf $(BINDIR)
-	rm $(APP_NAME)
+	rm -f $(APP_NAME)
 
 help:
 	@echo "src: $(C_SRC)"

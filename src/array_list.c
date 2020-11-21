@@ -3,7 +3,10 @@
 array_list_t new_array_list(){
     array_list_t list = malloc(sizeof(struct array_list));
 
-    list->size      = 1;
+    #if PROG != PROG_ERROR_NO_LEAK && PROG != PROG_ERROR_LEAK
+        list->size      = 1;
+    #endif
+
     list->cur_index = 0;
     list->array     = malloc(sizeof(element_t *) * list->size);
 
@@ -130,14 +133,14 @@ element_t *get(array_list_t list, unsigned int i){
     return list->array[i];
 }
 
-element_t remove_obj(array_list_t list,element_t *obj){
+void remove_obj(array_list_t list,element_t *obj){
     assert(list != NULL);
     assert(obj != NULL);
 
     remove_at(list, index_of(list, obj));
 }
 
-element_t clear(array_list_t list){
+void clear(array_list_t list){
     assert(list != NULL);
 
     list->cur_index = 0;
@@ -145,7 +148,7 @@ element_t clear(array_list_t list){
     list->array     = realloc(list->array, sizeof(element_t *) * list->size);
 }
 
-element_t update(array_list_t list, unsigned int i, element_t *obj){
+void update(array_list_t list, unsigned int i, element_t *obj){
     assert(list != NULL);
     assert(i < list->size);
     assert(obj != NULL);
@@ -153,7 +156,7 @@ element_t update(array_list_t list, unsigned int i, element_t *obj){
     list->array[i] = obj;
 }
 
-element_t print_list(array_list_t list){
+void print_list(array_list_t list){
     assert(list != NULL);
 
     printf("Size: %i\n", list->size);
@@ -166,7 +169,7 @@ element_t print_list(array_list_t list){
     }
 }
 
-element_t destruct(array_list_t list){
+void destruct(array_list_t list){
     assert(list != NULL);
 
     free(list->array);

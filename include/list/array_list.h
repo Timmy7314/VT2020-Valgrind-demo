@@ -5,6 +5,8 @@
 #include <stdio.h>
 #include <assert.h>
 
+#include "constants.h"
+
 typedef void element_t;
 
 typedef struct array_list{
