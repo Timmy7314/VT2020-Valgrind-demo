@@ -6,11 +6,17 @@ export INCDIR = include
 APP_NAME = valgrind_test
 
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra -I $(INCDIR)
+CFLAGS = -Wall -Wextra -I $(INCDIR)
 
 ifeq ($(DEBUG),1)
 CFLAGS += -g
 endif
+
+ifndef PROG
+PROG=1
+endif
+
+CFLAGS += -DPROG=$(PROG)
 
 C_SRC = $(wildcard $(SRCDIR)/*.c)
 OBJ=$(patsubst %,$(BINDIR)/$(SRCDIR)/%, $(notdir $(C_SRC:.c=.o)))
