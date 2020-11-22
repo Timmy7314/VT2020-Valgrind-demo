@@ -35,7 +35,7 @@ int main() {
 
     // Destruct each list
     for(register int i = 0; i < size; i++){
-        #if PROG == PROG_NO_ERROR_LEAK
+        #if PROG == PROG_NO_ERROR_LEAK || PROG == PROG_ERROR_LEAK
             if(i % 2 == 0) {
                 destruct(lists[i]);
             }

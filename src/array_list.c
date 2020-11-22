@@ -161,7 +161,7 @@ void print_list(array_list_t list){
 
     printf("Size: %i\n", list->size);
     printf("Elements inside: %i\n", list->cur_index);
-    printf("Elements: \n");
+    printf("Element pointers: \n");
 
     register unsigned int i = 0;
     for(; i < list->cur_index; i++){
