@@ -39,7 +39,7 @@ int main() {
             if(i % 2 == 0) {
                 destruct(lists[i]);
             }
-        #else 
+        #else
             destruct(lists[i]);
         #endif
     }
