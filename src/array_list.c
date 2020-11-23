@@ -4,7 +4,7 @@ array_list_t new_array_list(){
     array_list_t list = malloc(sizeof(struct array_list));
 
     #if PROG != PROG_ERROR_NO_LEAK && PROG != PROG_ERROR_LEAK
-        list->size      = 1;
+        list->size = 1;
     #endif
 
     list->cur_index = 0;
